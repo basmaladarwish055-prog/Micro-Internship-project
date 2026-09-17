@@ -5,13 +5,15 @@ const {
     getTasks,
     getTask,
     updateTask,
-    deleteTask
+    deleteTask,
+    uploadTaskImage
 } = require("../controllers/taskController.js");
 
 const {
     protect,
     companyOnly
 } = require("../middleware/authMiddleware.js");
+const { imageUpload } = require("../middleware/uploadMiddleware.js");
 
 const router = express.Router();
 
@@ -34,6 +36,7 @@ router.put("/:id", protect, companyOnly, updateTask);
 
 // Delete task - Company only
 router.delete("/:id", protect, companyOnly, deleteTask);
+router.patch("/:id/image", protect, companyOnly, imageUpload("image"), uploadTaskImage);
 
 
 module.exports = router;

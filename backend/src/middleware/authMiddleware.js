@@ -38,7 +38,18 @@ const companyOnly = (req, res, next) => {
     next();
 };
 
+const studentOnly = (req, res, next) => {
+    if (req.user.role !== "STUDENT") {
+        return res.status(403).json({
+            message: "Only students can perform this action"
+        });
+    }
+
+    next();
+};
+
 module.exports = {
     protect,
-    companyOnly
+    companyOnly,
+    studentOnly
 };

@@ -25,7 +25,32 @@ const userSchema = new mongoose.Schema(
             type: String,
             enum: ["STUDENT", "COMPANY", "ADMIN"],
             default: "STUDENT"
-        }
+        },
+
+        bio: {
+            type: String,
+            trim: true,
+            default: ""
+        },
+
+        skills: {
+            type: [String],
+            default: []
+        },
+
+        experience: {
+            type: String,
+            trim: true,
+            default: ""
+        },
+
+        profilePhoto: {
+            type: String,
+            default: ""
+        },
+
+        passwordResetToken: String,
+        passwordResetExpires: Date
     },
     {
         timestamps: true

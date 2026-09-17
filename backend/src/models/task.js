@@ -49,6 +49,11 @@ const taskSchema = new mongoose.Schema(
             type: String,
             enum: ["OPEN", "IN_PROGRESS", "COMPLETED"],
             default: "OPEN"
+        },
+
+        imageUrl: {
+            type: String,
+            default: ""
         }
     },
     {

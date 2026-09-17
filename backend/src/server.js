@@ -5,16 +5,23 @@ require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes.js");
 const applicationRoutes = require("./routes/applicationRoutes.js");
+const submissionRoutes = require("./routes/submissionRoutes.js");
+const reviewRoutes = require("./routes/reviewRoutes.js");
+const userRoutes = require("./routes/userRoutes.js");
 
 const app = express();
 
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
+app.use("/uploads", express.static("uploads"));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/applications", applicationRoutes);
+app.use("/api/submissions", submissionRoutes);
+app.use("/api/reviews", reviewRoutes);
+app.use("/api/users", userRoutes);
 
 app.get("/", (req, res) => {
     res.json({
